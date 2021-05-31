@@ -8,6 +8,19 @@ final ThemeData themeData = ThemeData(
   /// 主题色
   primaryColor: AppColors.primary,
 
+  /// 去除Tabbar阴影
+  appBarTheme: AppBarTheme(
+    backgroundColor: AppColors.nav,
+    elevation: 0,
+  ),
+
+  /// tabbar的样式
+  tabBarTheme: TabBarTheme(
+      unselectedLabelColor: AppColors.unactive,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelStyle: TextStyle(fontSize: 18),
+      labelPadding: EdgeInsets.symmetric(horizontal: 12)),
+
   /// 文字颜色
   textTheme: TextTheme(
     bodyText2: TextStyle(
