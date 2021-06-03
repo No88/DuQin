@@ -17,7 +17,7 @@ class _TransitPageState extends State<TransitPage> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(milliseconds: 1000), (timer) {
+    _time = Timer.periodic(Duration(milliseconds: 1000), (timer) {
       setState(() {
         _currentTime--;
       });
@@ -31,6 +31,7 @@ class _TransitPageState extends State<TransitPage> {
   }
 
   void _jumpRootPage() {
+    _time.cancel();
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (BuildContext builder) => RootPage()),

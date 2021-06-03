@@ -1,3 +1,6 @@
+import 'package:duqin/components/root_page_head.dart';
+import 'package:duqin/http/http.dart';
+import 'package:duqin/view/sub_pages/song_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +21,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ];
 
   final List<Widget> _pages = [
-    Text('歌曲'),
+    SongPage(),
     Text('推荐'),
     Text('歌手'),
     Text('小视频'),
@@ -27,6 +30,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ];
 
   TabController _tabController;
+
+  Future getList() async {
+    final result = await Http.get('http://www.baidu.com');
+    print(result);
+  }
 
   @override
   void dispose() {
@@ -37,17 +45,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     _tabController = TabController(
+      initialIndex: 1,
       length: _tabs.length,
       vsync: this,
     );
     super.initState();
+
+    _tabController.addListener(() {
+      print('1111111');
+      // getList();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('首页'),
+        title: RootPageHead(),
         bottom: TabBar(
           tabs: _tabs,
           controller: _tabController,

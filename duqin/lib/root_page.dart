@@ -71,7 +71,7 @@ class RrootPageState extends State<RootPage> {
 
   Widget _addButton() {
     return Container(
-      margin: EdgeInsets.only(top: 60),
+      margin: EdgeInsets.only(top: 52),
       height: 48,
       width: 48,
       child: FloatingActionButton(
